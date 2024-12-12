@@ -3,14 +3,16 @@
 #include <algorithm>
 #include <random>
 
-void shuffleNames(std::vector<std::string>& names) {
-    // Create a random number generator
+void shuffleNames(std::vector<std::string>& names) 
+{
+
     std::random_device rd;
     std::mt19937 generator(rd());
     std::shuffle(names.begin(), names.end(), generator);
 }
 
-int main() {
+int main() 
+{
     int count;
     std::cout << "How many people will be participating: ";
     std::cin >> count;
