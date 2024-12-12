@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <random>
-
+//There is no exception handling. Don't be silly
 void shuffleNames(std::vector<std::string>& names) 
 {
 
