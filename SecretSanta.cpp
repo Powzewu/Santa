@@ -3,42 +3,31 @@
 #include <algorithm>
 #include <random>
 
-
-void shufflePointers(void* arr[], size_t size) {
+void shuffleNames(std::vector<std::string>& names) {
     // Create a random number generator
     std::random_device rd;
-    std::mt19937 generator(rd());             
-
-    std::shuffle(arr, arr + size, generator);
+    std::mt19937 generator(rd());
+    std::shuffle(names.begin(), names.end(), generator);
 }
 
-int main()
-{
+int main() {
     int count;
-    std::cout<<"How many people will be participating: ";
+    std::cout << "How many people will be participating: ";
+    std::cin >> count;
 
-    std::cin>>count;
+    std::vector<std::string> participants(count);
 
-    std::string *ptr = new std::string[count];
-
-    for (int i = 0; i < count; i++)
-    {
-        std::string name;
-        std::cout<<"Enter the name of the "<<i+1<<" participant: ";
-        std::cin>>name;
-
-        ptr[i] = name;
+    for (int i = 0; i < count; i++) {
+        std::cout << "Enter the name of participant " << i + 1 << ": ";
+        std::cin >> participants[i];
     }
 
-    shufflePointers(reinterpret_cast<void**>(ptr), count);
+    shuffleNames(participants);
 
-    for (int i = 0; i < count; i++)
-    {
-        if((i<count-1))
-        std::cout<<ptr[i]<<"-->";
-        else
-        std::cout<<ptr[i];
+    for (const auto& name : participants) {
+        std::cout << name << " --> ";
     }
-    
+    std::cout << participants[0] << std::endl;
+
     return 0;
 }
